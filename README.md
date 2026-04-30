@@ -116,15 +116,16 @@ Essa estrutura permite que a Inteligência Artificial utilize os dados de forma 
 ```
 
 
-  # Campos Mapeados
-paciente: informações do usuário
-relatorio: dados do exame
-resultados: lista de análises
-categoria: área analisada
-condicao: condição genética
-nivel_risco: classificação
-descricao: explicação simplificada
-recomendacao: orientação inicial
+### Campos Mapeados
+
+- **paciente:** informações do usuário  
+- **relatorio:** dados do exame  
+- **resultados:** lista de análises  
+- **categoria:** área analisada  
+- **condicao:** condição genética  
+- **nivel_risco:** classificação  
+- **descricao:** explicação simplificada  
+- **recomendacao:** orientação inicial  
 
 ## 8. Inteligência Artificial
 
@@ -191,16 +192,16 @@ A IA interpreta a pergunta, recupera os dados relevantes e gera uma resposta cla
 
 ### Entrada e Saída da IA
 
-Entrada:
+**Entrada:**
 - Dados estruturados (JSON)
 - Embeddings armazenados
 - Pergunta do usuário
 
-Processamento:
+**Processamento:**
 - Busca semântica no banco vetorial
 - Interpretação com modelo de linguagem (LLM)
 
-Saída:
+**Saída:**
 - Resposta em linguagem simples
 - Explicação do resultado
 - Recomendação personalizada (quando aplicável)
@@ -232,10 +233,10 @@ Por se tratar de dados sensíveis de saúde, o sistema adota regras de uso respo
 
 ###  Exemplo de Interação
 
-Pergunta do usuário:  
+**Pergunta do usuário:**  
 "Eu tenho risco de diabetes?"
 
-Resposta da IA:  
+**Resposta da IA:**  
 "Sim, de acordo com seu relatório genético, você apresenta alto risco para diabetes tipo 2. Isso indica uma predisposição genética para o desenvolvimento da condição.
 
 Recomenda-se manter uma alimentação equilibrada, praticar atividades físicas regularmente e buscar acompanhamento médico preventivo."
@@ -372,14 +373,14 @@ Ao invés de apenas visualizar informações, o usuário consegue compreender, e
 
 ## Conclusão
 
-Este projeto propõe uma solução para um problema real e relevante no contexto da saúde digital: a dificuldade de interpretação de relatórios genéticos técnicos por parte dos usuários.
+Este projeto propõe uma solução para um problema relevante no contexto da saúde digital: a dificuldade de interpretação de relatórios genéticos técnicos por parte dos usuários.
 
-A partir dessa necessidade, foi desenvolvida uma abordagem estruturada que combina processamento de dados, Inteligência Artificial e experiência do usuário para transformar informações complexas em conhecimento acessível, interativo e orientado à tomada de decisão.
+A solução combina processamento de dados, Inteligência Artificial e experiência do usuário para transformar informações complexas em conhecimento acessível e aplicável.
 
-Por meio da conversão de dados não estruturados em formato estruturado e da aplicação de modelos de linguagem com abordagem RAG, a solução permite interpretar resultados, responder perguntas e oferecer orientações personalizadas de forma clara, contextualizada e responsável.
+Por meio da estruturação dos dados e da utilização de modelos de linguagem com abordagem RAG, o sistema permite interpretar resultados, responder perguntas e oferecer orientações personalizadas de forma clara e responsável.
 
-A arquitetura proposta garante integração entre os componentes do sistema, enquanto a interface foi projetada para facilitar a compreensão e promover maior autonomia do usuário em relação aos seus próprios dados de saúde.
+A arquitetura garante integração entre os componentes, enquanto a interface promove uma experiência intuitiva e centrada no usuário.
 
-Dessa forma, o projeto demonstra, de forma prática, como a aplicação estratégica de Inteligência Artificial pode ampliar o valor de produtos baseados em dados, transformando relatórios estáticos em experiências inteligentes.
+Dessa forma, o projeto demonstra como a aplicação estratégica de Inteligência Artificial pode ampliar o valor de produtos baseados em dados, transformando relatórios estáticos em experiências inteligentes.
 
-Como evolução futura, a solução pode ser expandida para integração com profissionais de saúde, monitoramento contínuo e maior personalização, ampliando seu impacto e aplicabilidade no ecossistema de saúde digital.
+Como evolução futura, a solução pode incluir integração com profissionais de saúde e monitoramento contínuo, ampliando seu impacto no ecossistema digital.
