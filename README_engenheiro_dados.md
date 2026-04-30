@@ -6,6 +6,81 @@
 
 ---
 
+## User Stories Atendidas
+
+A função de Engenheiro de Dados é **fundamental para todas as 5 User Stories** definidas pelo Product Owner, fornecendo a base de dados estruturados que permite cada funcionalidade:
+
+### 🎯 User Story 1: "Entender relatório em linguagem simples"
+
+**Como suportamos:** Extraímos e estruturamos os dados técnicos do PDF, criando campos `descricao_simples` e `impacto_pratico` que traduzem terminologia genômica para linguagem acessível.
+
+### 🎯 User Story 2: "Fazer perguntas específicas sobre o exame"
+
+**Como suportamos:** Organizamos todos os dados clínicos em JSON estruturado, permitindo que a IA responda perguntas precisas baseadas nos dados reais do paciente (marcadores genéticos, percentis, recomendações).
+
+### 🎯 User Story 3: "Receber recomendações personalizadas"
+
+**Como suportamos:** Extraímos e categorizamos as recomendações clínicas por urgência (`urgencia_medica`) e criamos campos de `recomendacoes_prioritarias` no sumário.
+
+### 🎯 User Story 4: "Visualização rápida para médicos"
+
+**Como suportamos:** Criamos campos específicos para médicos (`relevancia_medico`, `principais_riscos_medico`) e mantemos dados técnicos detalhados (marcadores genéticos, percentis, classificações ACMG).
+
+### 🎯 User Story 5: "Dados organizados para acompanhamento"
+
+**Como suportamos:** Estruturamos todos os dados em hierarquia clara (paciente → sumário → resultados → ancestralidade → metadados) com campos de rastreabilidade e organização temporal.
+
+---
+
+## Dados por Perfil de Usuário
+
+### 👤 Paciente — Campos Mais Relevantes
+
+```json
+{
+  "paciente": { "nome", "data_nascimento", "id_relatorio" },
+  "sumario": {
+    "resumo_executivo_paciente",
+    "recomendacoes_prioritarias"
+  },
+  "resultados[].descricao_simples": "Explicação em linguagem acessível",
+  "resultados[].impacto_pratico": "O que isso significa no dia a dia",
+  "resultados[].urgencia_medica": "Quando procurar ajuda médica"
+}
+```
+
+### 👨‍⚕️ Médico — Campos Mais Relevantes
+
+```json
+{
+  "sumario": {
+    "principais_riscos_medico",
+    "condicoes_alto_risco",
+    "cobertura_genomica_snps"
+  },
+  "resultados[].marcadores_geneticos": "Detalhes técnicos completos",
+  "resultados[].escore_poligênico_percentil": "Quantificação de risco",
+  "resultados[].relevancia_medico": "Prioridade clínica e condutas",
+  "resultados[].descricao_tecnica": "Terminologia genômica precisa"
+}
+```
+
+### 🏥 Dasa/Laboratório — Campos Mais Relevantes
+
+```json
+{
+  "metadata": {
+    "tempo_processamento_segundos",
+    "qualidade_extracao",
+    "campos_extraidos_total",
+    "confiabilidade_dados",
+    "fonte_extracao"
+  }
+}
+```
+
+---
+
 ## O Problema com os Dados Não Estruturados
 
 O relatório genético do Genera é entregue em formato PDF — um documento projetado para leitura humana, não para processamento por máquinas. Isso cria uma barreira técnica fundamental:
@@ -127,7 +202,7 @@ Para o JSON completo com todos os dados do relatório simulado, ver [`dados_estr
 
 ---
 
-## Pipeline de Dados — Diagrama
+## Pipeline de Dados — Diagrama (Atualizado com Prioridades das User Stories)
 
 ```
 ┌──────────────────────────────────────────────────────────────────┐
@@ -137,40 +212,47 @@ Para o JSON completo com todos os dados do relatório simulado, ver [`dados_estr
                        │
                        ▼
 ┌──────────────────────────────────────────────────────────────────┐
-│  2. EXTRAÇÃO                                                     │
-│  pdfplumber → tabelas como listas                                │
-│  PyMuPDF   → texto de parágrafos e metadados                     │
-│  [fallback] Tesseract OCR → se PDF escaneado                     │
+│  2. EXTRAÇÃO (Priorizada por User Stories)                       │
+│  🔴 ALTA: Resultados genéticos (seção 2) — US1,2,3,4,5          │
+│  🔴 ALTA: Cabeçalho paciente (seção 0) — US1,4,5                │
+│  🔴 ALTA: Sumário executivo (seção 1) — US4,5                   │
+│  🟡 MÉDIA: Ancestralidade (seção 3) — US5                       │
+│  🟢 BAIXA: Metodologia (seção 4) — metadados                    │
 └──────────────────────┬───────────────────────────────────────────┘
                        │
                        ▼
 ┌──────────────────────────────────────────────────────────────────┐
-│  3. LIMPEZA                                                      │
+│  3. LIMPEZA E ENRIQUECIMENTO                                     │
 │  Remoção de cabeçalhos/rodapés repetidos                         │
 │  Normalização de espaços, quebras de linha, encoding             │
 │  Separação de marcadores genéticos                               │
-│  Normalização de percentuais (vírgula → ponto)                   │
+│  + NOVO: Geração de campos específicos por perfil de usuário     │
+│  + NOVO: Classificação de urgência médica                        │
+│  + NOVO: Tradução técnico → simples                              │
 └──────────────────────┬───────────────────────────────────────────┘
                        │
                        ▼
 ┌──────────────────────────────────────────────────────────────────┐
-│  4. ESTRUTURAÇÃO                                                 │
-│  Identificação de seções por regex (subtítulos numerados)        │
+│  4. ESTRUTURAÇÃO ORIENTADA A USER STORIES                        │
 │  Mapeamento campo a campo para schema JSON                       │
 │  Validação de tipos e valores obrigatórios                       │
+│  + NOVO: Campos específicos para paciente vs médico              │
+│  + NOVO: Priorização de dados por relevância das US              │
+│  + NOVO: Metadados de qualidade para laboratório                 │
 └──────────────────────┬───────────────────────────────────────────┘
                        │
                        ▼
 ┌──────────────────────────────────────────────────────────────────┐
-│  5. JSON                                                         │
+│  5. JSON ESTRUTURADO (Otimizado para User Stories)               │
 │  dados_estruturados.json — schema padronizado e validado         │
 │  Pronto para consumo pelo pipeline de IA                         │
+│  Campos organizados por perfil de usuário                        │
 └──────────────────────┬───────────────────────────────────────────┘
                        │
                        ▼
 ┌──────────────────────────────────────────────────────────────────┐
-│  6. IA                                                           │
-│  JSON → embeddings → RAG → LLM → resposta em linguagem simples   │
+│  6. IA (RAG)                                                     │
+│  JSON → embeddings → RAG → LLM → resposta personalizada por US   │
 └──────────────────────────────────────────────────────────────────┘
 ```
 

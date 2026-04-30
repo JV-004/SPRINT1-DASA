@@ -14,6 +14,7 @@ O PDF simulado é um documento nativo (texto selecionável, não escaneado), ger
 
 **Tipo de dado:** Texto estruturado em tabela  
 **Aparência no PDF:** Bloco no topo de todas as páginas com logotipo, título e dados do paciente em grade de 4 colunas.
+**🔴 PRIORIDADE: ALTA** — Essencial para User Stories 1, 4 e 5 (identificação do paciente e organização dos dados)
 
 | Campo              | Exemplo                          |
 | ------------------ | -------------------------------- |
@@ -34,6 +35,7 @@ O PDF simulado é um documento nativo (texto selecionável, não escaneado), ger
 
 **Tipo de dado:** Texto corrido + tabela de resumo numérico  
 **Aparência no PDF:** Parágrafo descritivo seguido de tabela com 5 colunas de contagem.
+**🔴 PRIORIDADE: ALTA** — Crítico para User Stories 4 e 5 (visualização rápida para médicos e dados organizados)
 
 **Conteúdo:**
 
@@ -55,6 +57,7 @@ O PDF simulado é um documento nativo (texto selecionável, não escaneado), ger
 
 **Tipo de dado:** Misto — tabela de classificação + texto técnico corrido  
 **Aparência no PDF:** Cada condição ocupa um bloco com subtítulo numerado (2.1, 2.2 ... 2.7), seguido de tabela de 3 colunas e dois parágrafos de texto.
+**🔴 PRIORIDADE: MÁXIMA** — Essencial para TODAS as User Stories (1, 2, 3, 4, 5)
 
 ### Estrutura de cada condição:
 
@@ -70,15 +73,15 @@ Recomendação Clínica: [texto com orientações médicas]
 
 ### Condições presentes:
 
-| ID  | Doença                                      | Risco | Categoria                      |
-| --- | ------------------------------------------- | ----- | ------------------------------ |
-| 2.1 | Diabetes Mellitus Tipo 2                    | ALTO  | Metabolismo e Endocrinologia   |
-| 2.2 | Carcinoma de Mama (BRCA-relacionado)        | ALTO  | Oncologia                      |
-| 2.3 | Hipertensão Arterial Essencial              | MÉDIO | Cardiologia                    |
-| 2.4 | Doença de Alzheimer (início tardio)         | MÉDIO | Neurologia                     |
-| 2.5 | Doença Celíaca                              | MÉDIO | Gastroenterologia / Imunologia |
-| 2.6 | Trombofilia Hereditária (Fator V de Leiden) | BAIXO | Hematologia                    |
-| 2.7 | Intolerância à Lactose (tipo adulto)        | BAIXO | Nutrigenômica                  |
+| ID  | Doença                                      | Risco | Categoria                      | Relevância User Stories |
+| --- | ------------------------------------------- | ----- | ------------------------------ | ----------------------- |
+| 2.1 | Diabetes Mellitus Tipo 2                    | ALTO  | Metabolismo e Endocrinologia   | US1,2,3,4,5             |
+| 2.2 | Carcinoma de Mama (BRCA-relacionado)        | ALTO  | Oncologia                      | US1,2,3,4,5             |
+| 2.3 | Hipertensão Arterial Essencial              | MÉDIO | Cardiologia                    | US1,2,3,4,5             |
+| 2.4 | Doença de Alzheimer (início tardio)         | MÉDIO | Neurologia                     | US1,2,3,4,5             |
+| 2.5 | Doença Celíaca                              | MÉDIO | Gastroenterologia / Imunologia | US1,2,3,4,5             |
+| 2.6 | Trombofilia Hereditária (Fator V de Leiden) | BAIXO | Hematologia                    | US1,2,3,4,5             |
+| 2.7 | Intolerância à Lactose (tipo adulto)        | BAIXO | Nutrigenômica                  | US1,2,3,4,5             |
 
 **Desafio de extração:**
 
@@ -92,6 +95,7 @@ Recomendação Clínica: [texto com orientações médicas]
 
 **Tipo de dado:** Texto introdutório + tabela de percentuais  
 **Aparência no PDF:** Parágrafo metodológico seguido de tabela de 3 colunas com 7 regiões.
+**🟡 PRIORIDADE: MÉDIA** — Relevante para User Story 5 (dados organizados) mas não crítica para as demais
 
 | Região                          | Percentual | Intervalo de Confiança |
 | ------------------------------- | ---------- | ---------------------- |
@@ -111,6 +115,7 @@ Recomendação Clínica: [texto com orientações médicas]
 
 **Tipo de dado:** Texto corrido + tabela técnica  
 **Aparência no PDF:** Parágrafo descritivo + tabela de 3 colunas com etapas do pipeline laboratorial.
+**🟢 PRIORIDADE: BAIXA** — Relevante apenas para laboratório/Dasa (eficiência), não impacta User Stories do paciente/médico
 
 **Conteúdo:** Descreve as etapas do pipeline bioinformático (extração de DNA, genotipagem, controle de qualidade, imputação, análise de risco, ancestralidade, anotação de variantes).
 
@@ -122,6 +127,7 @@ Recomendação Clínica: [texto com orientações médicas]
 
 **Tipo de dado:** Texto simples  
 **Aparência no PDF:** Linha de assinatura + dados do laboratório + versão do documento.
+**🟡 PRIORIDADE: MÉDIA** — Importante para metadados e rastreabilidade (User Story 5)
 
 **Conteúdo:**
 
@@ -135,11 +141,30 @@ Recomendação Clínica: [texto com orientações médicas]
 
 ## Resumo dos Tipos de Dado por Seção
 
-| Seção                | Tipo Principal     | Estrutura            | Complexidade |
-| -------------------- | ------------------ | -------------------- | ------------ |
-| Cabeçalho            | Identificação      | Tabela 4 colunas     | Média        |
-| Sumário Executivo    | Contagens + texto  | Tabela + parágrafo   | Baixa        |
-| Resultados Genéticos | Clínico técnico    | Tabela + texto misto | Alta         |
-| Ancestralidade       | Percentuais        | Tabela 3 colunas     | Baixa        |
-| Metodologia          | Técnico-científico | Tabela + parágrafo   | Média        |
-| Rodapé               | Metadados          | Texto simples        | Baixa        |
+| Seção                | Tipo Principal     | Estrutura            | Complexidade | Prioridade User Stories |
+| -------------------- | ------------------ | -------------------- | ------------ | ----------------------- |
+| Cabeçalho            | Identificação      | Tabela 4 colunas     | Média        | 🔴 Alta                 |
+| Sumário Executivo    | Contagens + texto  | Tabela + parágrafo   | Baixa        | 🔴 Alta                 |
+| Resultados Genéticos | Clínico técnico    | Tabela + texto misto | Alta         | 🔴 Máxima               |
+| Ancestralidade       | Percentuais        | Tabela 3 colunas     | Baixa        | 🟡 Média                |
+| Metodologia          | Técnico-científico | Tabela + parágrafo   | Média        | 🟢 Baixa                |
+| Rodapé               | Metadados          | Texto simples        | Baixa        | 🟡 Média                |
+
+---
+
+## Justificativa da Priorização
+
+**🔴 Prioridade Máxima/Alta:**
+
+- **Resultados Genéticos:** Core de todas as User Stories — sem esses dados, nenhuma funcionalidade funciona
+- **Cabeçalho:** Identificação essencial para organização e personalização
+- **Sumário:** Visão rápida crítica para médicos (US4) e organização geral (US5)
+
+**🟡 Prioridade Média:**
+
+- **Ancestralidade:** Interessante para o usuário mas não impacta decisões de saúde
+- **Rodapé:** Importante para rastreabilidade e confiança, mas não é consultado ativamente
+
+**🟢 Prioridade Baixa:**
+
+- **Metodologia:** Relevante apenas para auditoria técnica e controle de qualidade do laboratório

@@ -16,7 +16,18 @@
     "condicoes_baixo_risco": 2,
     "cobertura_genomica_snps": 654027,
     "plataforma_genotipagem": "Illumina GSA v3.0",
-    "aviso_legal": "Este relatório tem caráter informativo e não substitui consulta médica. Predisposição genética não determina desenvolvimento de doença."
+    "aviso_legal": "Este relatório tem caráter informativo e não substitui consulta médica. Predisposição genética não determina desenvolvimento de doença.",
+    "resumo_executivo_paciente": "Foram analisadas 7 condições genéticas. Você tem 2 condições de risco alto que merecem atenção especial, 3 de risco médio para monitoramento e 2 de risco baixo sem preocupação específica.",
+    "principais_riscos_medico": [
+      "Diabetes Mellitus Tipo 2 (Alto - percentil 89)",
+      "Carcinoma de Mama BRCA2 (Alto - variante patogênica)",
+      "Hipertensão Arterial (Médio - percentil 67)"
+    ],
+    "recomendacoes_prioritarias": [
+      "Consulta com endocrinologista para diabetes",
+      "Aconselhamento genético oncológico urgente",
+      "Monitoramento cardiovascular anual"
+    ]
   },
   "resultados": [
     {
@@ -48,6 +59,9 @@
       "descricao_tecnica": "Homozigose para o alelo de risco T no polimorfismo RS7903146 do gene TCF7L2 (odds ratio de 1,37 por alelo; OR combinado: 1,88). Heterozigose em RS12255372 (TCF7L2) e RS1801282 (PPARG — Pro12Ala) detectadas, conferindo susceptibilidade aumentada à resistência insulínica e disfunção das células beta pancreáticas.",
       "descricao_simples": "Seu DNA indica uma chance maior de desenvolver diabetes tipo 2. Dois genes importantes para o controle do açúcar no sangue apresentam variações que aumentam esse risco. Isso não significa que você vai ter diabetes, mas que precisa de mais atenção com alimentação e exercícios.",
       "recomendacao": "Monitoramento semestral de glicemia de jejum e HbA1c. Adoção de dieta hipoglicídica com índice glicêmico controlado. Prática regular de atividade física aeróbica (mínimo 150 minutos por semana). Avaliação com endocrinologista recomendada.",
+      "impacto_pratico": "Na prática, isso significa que você deve evitar açúcares simples, fazer exercícios regularmente e checar sua glicemia a cada 6 meses. Pequenas mudanças no dia a dia podem fazer grande diferença.",
+      "urgencia_medica": "Alta - recomenda-se consulta com endocrinologista nos próximos 30 dias",
+      "relevancia_medico": "Prioridade clínica alta - paciente requer acompanhamento endocrinológico especializado e monitoramento glicêmico rigoroso",
       "fontes": [
         "Grant SF et al. Nat Genet. 2006;38(3):320-3",
         "Florez JC. Clin Pharmacol Ther. 2007;82(5):620-5"
@@ -82,6 +96,9 @@
       "descricao_tecnica": "Variante patogênica de perda de função no gene BRCA2 (c.5946delT, p.Ser1982Argfs), classificada como Patogênica (Classe 5) segundo critérios ACMG/AMP. Risco cumulativo de carcinoma de mama de 45–85% ao longo da vida e risco de carcinoma ovariano de 10–30%. Variantes adicionais em BRCA1 com efeito modificador detectadas.",
       "descricao_simples": "Foi encontrada uma alteração importante em um gene chamado BRCA2, que normalmente protege contra câncer. Essa alteração aumenta significativamente o risco de câncer de mama e ovário ao longo da vida. É muito importante consultar um especialista em genética médica para discutir as próximas etapas.",
       "recomendacao": "Encaminhamento urgente para aconselhamento genético oncológico. Rastreamento mamográfico anual a partir dos 25 anos. Ressonância magnética de mama anual. Discussão de estratégias de redução de risco com oncologista geneticista.",
+      "impacto_pratico": "Isso significa que você precisa de acompanhamento médico especializado e exames mais frequentes. Existem estratégias preventivas eficazes que um geneticista pode discutir com você.",
+      "urgencia_medica": "Urgente - recomenda-se consulta com geneticista oncológico em até 15 dias",
+      "relevancia_medico": "Prioridade clínica máxima - variante patogênica BRCA2 requer protocolo de rastreamento intensivo e aconselhamento genético familiar",
       "fontes": [
         "Antoniou A et al. Am J Hum Genet. 2003;72(5):1117-30",
         "NCCN Guidelines Genetic/Familial High-Risk Assessment: Breast, Ovarian, and Pancreatic v2.2024"
@@ -335,6 +352,10 @@
     "especialidade_responsavel": "Genética Médica",
     "data_processamento": "2024-11-12",
     "tipo_pdf": "nativo",
-    "fonte_extracao": "pdfplumber + PyMuPDF"
+    "fonte_extracao": "pdfplumber + PyMuPDF",
+    "tempo_processamento_segundos": 12.4,
+    "qualidade_extracao": "alta",
+    "campos_extraidos_total": 47,
+    "confiabilidade_dados": "99.2%"
   }
 }
