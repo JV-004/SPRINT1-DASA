@@ -1,4 +1,13 @@
-﻿# Projeto Dasa Genera - Sprint 1  
+# FIAP - Faculdade de Informática e Administração Paulista
+
+<p align="center">
+<a href= "https://www.fiap.com.br/"><img src="docs/images/logo-fiap (2).png" alt="FIAP - Faculdade de Informática e Admnistração Paulista" border="0" width=40% height=40%></a>
+</p>
+
+<br>
+---
+
+ # Projeto Dasa Genera - Sprint 1  
 ### Transformando relatórios genéticos em uma experiência inteligente e interativa
 
 ## 1. Problema
@@ -389,3 +398,13 @@ A arquitetura garante integração entre os componentes, enquanto a interface pr
 Dessa forma, o projeto demonstra como a aplicação estratégica de Inteligência Artificial pode ampliar o valor de produtos baseados em dados, transformando relatórios estáticos em experiências inteligentes.
 
 Como evolução futura, a solução pode incluir integração com profissionais de saúde e monitoramento contínuo, ampliando seu impacto no ecossistema digital.
+
+👥 **Integrantes do grupo:** *(nomes a serem adicionados)*
+
+| Nome | RM | Contribuição |
+|---|---:|---|
+| Tayná Esteves | RM562491 | Product Owner / Negócio |
+| João | RM565999 | Engenheiro de Dados (PDF → Estrutura) |
+| Carlos Eduardo | RM566487 | Especialista em IA |
+| Endrew Alves | RM563646 | Arquiteto + Front-end |
+
