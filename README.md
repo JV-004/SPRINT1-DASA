@@ -249,6 +249,11 @@ O principal diferencial da IA proposta é que ela não apenas responde perguntas
 
 Dessa forma, a solução atua como um apoio inteligente à tomada de decisão em saúde.
 
+## 🏗️ Arquitetura da Solução
+
+### 🧱 Diagrama da Arquitetura
+![Diagrama](docs/images/arquitetura.png)
+
 ###  Pipeline Geral
 
 Usuário 
