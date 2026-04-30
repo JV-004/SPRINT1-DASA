@@ -499,7 +499,7 @@ Como evolução futura, a solução pode incluir integração com profissionais 
 
 ---
 
-> 📹 **Vídeo de apresentação:** *(link a ser adicionado)*
+> 📹 **Vídeo de apresentação:** https://youtu.be/0x63S_5DD_8?si=tAdz-H4V1V-Ay5te *
 
 
 
