@@ -250,7 +250,27 @@ Dessa forma, a solução atua como um apoio inteligente à tomada de decisão em
 
 ###  Pipeline Geral
 
-Usuário ↓ Upload de PDF (Front-end) ↓ API Backend ↓ Extração de Texto (PDF/OCR) ↓ Estruturação em JSON ↓ Armazenamento ↓ Embeddings ↓ Vector Database ↓ LLM + RAG ↓ Resposta Inteligente ↓ Interface (Chat + Dashboard)
+Usuário 
+↓ 
+Upload de PDF (Front-end) 
+↓ 
+API Backend 
+↓ 
+Extração de Texto (PDF/OCR) 
+↓ 
+Estruturação em JSON 
+↓ 
+Armazenamento 
+↓ 
+Embeddings 
+↓ 
+Vector Database 
+↓ 
+LLM + RAG 
+↓ 
+Resposta Inteligente 
+↓ 
+Interface (Chat + Dashboard)
 
 ---
 
