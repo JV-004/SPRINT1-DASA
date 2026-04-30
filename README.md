@@ -299,6 +299,7 @@ Quando o usuário faz uma pergunta, o sistema realiza uma busca semântica nesse
 ---
 
 ### Interface
+
 O usuário interage com o sistema por meio de um dashboard e um assistente inteligente (chatbot), podendo visualizar seus dados e fazer perguntas em linguagem natural.
 ---
 
