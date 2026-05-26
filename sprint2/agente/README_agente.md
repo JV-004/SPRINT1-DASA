@@ -276,3 +276,115 @@ Confiabilidade: 100%
 ## Justificativa
 
 A existência dessa camada de validação reduz alucinação e aumenta confiabilidade em aplicações que lidam com informações genéticas e saúde.
+
+# 6. Impacto para Negócio e Diferenciais da Solução
+
+O módulo do agente foi projetado para não atuar apenas como uma interface conversacional, mas como uma camada de interpretação segura capaz de ampliar o valor percebido dos relatórios genéticos.
+
+---
+
+## Problema Atual
+
+Relatórios genéticos possuem alto valor científico, porém apresentam barreiras como:
+
+- excesso de linguagem técnica;
+- baixa taxa de leitura completa;
+- dificuldade de interpretação;
+- aumento de dúvidas para canais de atendimento.
+
+---
+
+## Solução Proposta
+
+O agente transforma relatórios extensos em conversas contextualizadas e rastreáveis.
+
+Exemplo:
+
+Antes:
+
+```txt
+Paciente recebe PDF
+↓
+Não entende o conteúdo
+↓
+Abandona leitura
+```
+
+Depois:
+
+```txt
+Paciente pergunta
+↓
+Agente busca trechos relevantes
+↓
+Explica em linguagem natural
+↓
+Paciente entende o relatório
+```
+
+---
+
+## Diferenciais Implementados
+
+| Diferencial | Benefício |
+|------------|-----------|
+| RAG | Redução de alucinação |
+| Guardrails | Segurança em saúde |
+| Respostas rastreáveis | Transparência |
+| Modo paciente/técnico | Personalização |
+| Fallback seguro | Maior confiabilidade |
+| Testes de validação | Qualidade contínua |
+
+---
+
+## Potencial de Evolução
+
+A arquitetura permite futuras extensões:
+
+### Histórico longitudinal
+
+Comparar relatórios do mesmo usuário ao longo do tempo.
+
+---
+
+### Memória contextual
+
+Adaptar profundidade das respostas conforme perfil do paciente.
+
+---
+
+### Explicações multimodais
+
+Transformar resultados em gráficos e explicações visuais.
+
+---
+
+### Insights preventivos
+
+Exemplo:
+
+"Você perguntou sobre metabolismo. Existem fatores ambientais que costumam influenciar esse marcador."
+
+(Sempre sem substituir orientação médica.)
+
+---
+
+## Indicadores de Sucesso (KPIs)
+
+| Indicador | Objetivo |
+|----------|----------|
+| Taxa de perguntas respondidas | >90% |
+| Redução de respostas fora do escopo | >80% |
+| Taxa de leitura do relatório | aumento |
+| Confiança do usuário | aumento |
+| Redução de suporte humano | redução |
+
+---
+
+# Conclusão
+
+O módulo Genera AI foi desenvolvido para atuar como um interpretador genético seguro, rastreável e centrado no usuário.
+
+A proposta combina recuperação semântica, engenharia de prompts, controle de comportamento e mecanismos de validação para entregar uma experiência mais compreensível sem abrir mão da responsabilidade em contexto de saúde.
+
+A arquitetura foi desenhada para permitir evolução futura sem dependência de um modelo específico de linguagem.
