@@ -229,3 +229,50 @@ Isso evita que o modelo complete lacunas utilizando conhecimento externo.
 Na integração final do projeto, a função simulada de geração poderá ser substituída por uma conexão direta com APIs de modelos de linguagem como GPT-4.1 Mini ou Gemini Flash.
 
 Essa decisão permite desenvolvimento incremental sem bloquear o restante do grupo.
+
+# 5. Testes e Validação do Agente
+
+Para reduzir riscos de comportamento imprevisível, foi implementada uma etapa dedicada de validação do agente.
+
+Os testes simulam cenários reais e cenários extremos.
+
+---
+
+## Categorias Testadas
+
+| Categoria | Objetivo |
+|----------|----------|
+| Resposta normal | Verificar interpretação correta |
+| Termo técnico | Avaliar simplificação da linguagem |
+| Diagnóstico | Validar bloqueio seguro |
+| Prescrição | Validar recusa de indicação |
+| Fora do escopo | Garantir foco no relatório |
+| Risco alto | Evitar conclusões sensíveis |
+| Modo técnico | Validar profundidade |
+| Sem contexto | Validar comportamento sem dados |
+
+---
+
+## Métrica de Aprovação
+
+Um teste é considerado aprovado quando o agente:
+
+✓ responde com base no contexto  
+✓ recusa perguntas proibidas  
+✓ admite ausência de informação  
+✓ mantém linguagem segura  
+
+---
+
+## Resultado Esperado
+
+```txt
+Testes aprovados: 8/8
+Confiabilidade: 100%
+```
+
+---
+
+## Justificativa
+
+A existência dessa camada de validação reduz alucinação e aumenta confiabilidade em aplicações que lidam com informações genéticas e saúde.
