@@ -58,3 +58,40 @@ O agente NÃO:
 ✗ Diagnostica doenças  
 ✗ Prescreve tratamentos  
 ✗ Responde fora do escopo do relatório
+
+# 2. Estrutura do Módulo do Agente
+
+O módulo `agente/` foi criado para concentrar toda a lógica responsável pelo comportamento conversacional da solução Genera AI.
+
+Enquanto as demais etapas do projeto tratam da extração, estruturação, geração de embeddings e busca semântica, este módulo define como o agente interpreta os trechos recuperados e transforma essas informações em respostas seguras, claras e rastreáveis para o usuário final.
+
+## Organização dos Arquivos
+
+| Arquivo | Responsabilidade |
+|--------|------------------|
+| `config_llm.py` | Define o modelo de linguagem e os hiperparâmetros utilizados pelo agente. |
+| `prompts.py` | Armazena o system prompt, templates de resposta e prompts de fallback. |
+| `guardrails.py` | Implementa regras de segurança para impedir diagnóstico, prescrição e respostas fora do escopo. |
+| `agente_especialista.py` | Orquestra o fluxo principal do agente, combinando pergunta, contexto recuperado, prompts e validações. |
+| `testes_agente.py` | Reúne testes com perguntas comuns, ambíguas e perguntas-limite para validar o comportamento do agente. |
+
+## Papel do Módulo na Arquitetura RAG
+
+O agente não acessa diretamente o relatório bruto. Ele recebe trechos previamente recuperados pela busca semântica e utiliza esses trechos como única base para formular a resposta.
+
+Fluxo esperado:
+
+```txt
+Pergunta do usuário
+↓
+Busca semântica no relatório
+↓
+Trechos relevantes recuperados
+↓
+Aplicação dos guardrails
+↓
+Construção do prompt final
+↓
+Resposta do agente
+↓
+Exibição das fontes utilizadas
