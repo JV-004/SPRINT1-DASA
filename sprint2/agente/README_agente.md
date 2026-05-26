@@ -388,3 +388,79 @@ O módulo Genera AI foi desenvolvido para atuar como um interpretador genético 
 A proposta combina recuperação semântica, engenharia de prompts, controle de comportamento e mecanismos de validação para entregar uma experiência mais compreensível sem abrir mão da responsabilidade em contexto de saúde.
 
 A arquitetura foi desenhada para permitir evolução futura sem dependência de um modelo específico de linguagem.
+
+# 7. Rastreabilidade das Respostas
+
+Como o sistema opera em contexto de saúde, todas as respostas do agente devem possuir rastreabilidade explícita.
+
+Isso significa que cada interpretação apresentada ao usuário precisa indicar quais trechos recuperados do relatório foram utilizados na construção da resposta.
+
+---
+
+## Objetivos da Rastreabilidade
+
+- reduzir alucinação do modelo;
+- aumentar transparência;
+- permitir auditoria da resposta;
+- garantir alinhamento com aplicações em saúde;
+- preservar confiança do usuário.
+
+---
+
+## Estratégia Implementada
+
+O agente recebe os trechos recuperados pela busca semântica e devolve esses mesmos trechos junto da resposta.
+
+Estrutura:
+
+```txt
+Pergunta
+↓
+Busca Semântica
+↓
+Trechos Recuperados
+↓
+Resposta Gerada
+↓
+Exibição das Fontes
+```
+
+---
+
+## Exemplo
+
+Entrada:
+
+```txt
+Pergunta:
+Existe predisposição genética para diabetes?
+```
+
+Saída:
+
+```txt
+Resumo:
+Foi identificada associação genética moderada.
+
+Explicação:
+O relatório sugere associação genética relacionada ao metabolismo da glicose.
+
+Na prática:
+Esse resultado representa tendência estatística e não diagnóstico.
+
+Baseado em:
+resultado_2.1
+recomendacao_2.1
+```
+
+---
+
+## Comportamento Esperado
+
+Se nenhuma fonte for recuperada:
+
+```txt
+Não encontrei informações suficientes no relatório enviado para responder com segurança.
+```
+
+O agente nunca deve complementar respostas utilizando conhecimento externo.
