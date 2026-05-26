@@ -90,6 +90,54 @@ Você recebe os mesmos recursos do Integrante 2, mais o contexto de como os chun
 
 **Cada resposta do agente deve citar a `fonte` do chunk** — isso garante rastreabilidade e evita alucinações.
 
+### Módulo implementado pelo Integrante 3 — Agente Especialista
+
+A partir dos trechos recuperados pela busca semântica, foi desenvolvido um módulo responsável por controlar como o sistema interpreta e apresenta as respostas ao usuário.
+
+Localização:
+
+```txt
+sprint2/agente/
+```
+
+Componentes implementados:
+
+| Arquivo | Função |
+|----------|--------|
+| `config_llm.py` | Configuração do modelo e hiperparâmetros |
+| `prompts.py` | System prompts e estratégias de resposta |
+| `guardrails.py` | Regras de segurança médica |
+| `agente_especialista.py` | Orquestração do fluxo do agente |
+| `testes_agente.py` | Testes de validação |
+
+Fluxo completo:
+
+```txt
+Pergunta
+↓
+Busca Semântica
+↓
+Trechos Recuperados
+↓
+Validação por Guardrails
+↓
+Construção do Prompt
+↓
+Geração da Resposta
+↓
+Exibição das Fontes
+```
+
+Diferenciais adicionados:
+
+- arquitetura RAG controlada;
+- respostas rastreáveis;
+- suporte a modo paciente e modo técnico;
+- recusa segura para perguntas médicas sensíveis;
+- resposta controlada quando não existir contexto suficiente.
+
+O agente foi projetado para explicar o relatório, e não substituir avaliação médica.
+
 ---
 
 ### Para o Integrante 4 — Construtor da Experiência
