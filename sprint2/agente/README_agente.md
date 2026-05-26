@@ -138,3 +138,94 @@ Construção do prompt final
 Geração da resposta
 ↓
 Retorno com resposta + fontes
+
+```
+
+## Estratégia de Funcionamento
+
+O agente foi desenvolvido seguindo o padrão RAG (Retrieval-Augmented Generation).
+
+Diferente de um chatbot tradicional, ele não gera respostas livremente.
+
+Toda resposta segue o seguinte processo:
+
+1. Receber pergunta do usuário
+2. Validar segurança da pergunta
+3. Receber contexto recuperado pela busca semântica
+4. Construir prompt controlado
+5. Gerar resposta
+6. Exibir fontes utilizadas
+
+---
+
+## Componentes Internos
+
+### Construção de Contexto
+
+A função `montar_contexto()` organiza os trechos recuperados pelo mecanismo de busca vetorial em um formato padronizado para consumo pelo modelo.
+
+Exemplo:
+
+```txt
+[Fonte 1]
+Predisposição genética moderada...
+
+[Fonte 2]
+Marcadores relacionados...
+```
+
+---
+
+### Construção do Prompt
+
+A função `construir_prompt_final()` combina:
+
+- System Prompt
+- Modo selecionado
+- Contexto recuperado
+- Pergunta do usuário
+
+Objetivo:
+
+- reduzir alucinações
+- garantir rastreabilidade
+- manter consistência de linguagem
+
+---
+
+### Modos de Resposta
+
+| Modo | Objetivo |
+|------|----------|
+| paciente | Linguagem simples e acolhedora |
+| técnico | Linguagem detalhada e precisa |
+
+---
+
+### Tratamento de Ausência de Dados
+
+Caso nenhum trecho relevante seja encontrado:
+
+```txt
+Não encontrei informações suficientes no relatório enviado para responder com segurança.
+```
+
+Isso evita que o modelo complete lacunas utilizando conhecimento externo.
+
+---
+
+## Benefícios da Arquitetura
+
+✓ Redução de alucinação do modelo  
+✓ Maior segurança em contexto médico  
+✓ Respostas rastreáveis  
+✓ Separação entre recuperação e geração  
+✓ Facilidade de manutenção e escalabilidade  
+
+---
+
+## Evolução Futura
+
+Na integração final do projeto, a função simulada de geração poderá ser substituída por uma conexão direta com APIs de modelos de linguagem como GPT-4.1 Mini ou Gemini Flash.
+
+Essa decisão permite desenvolvimento incremental sem bloquear o restante do grupo.
