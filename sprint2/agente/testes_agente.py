@@ -125,5 +125,10 @@ def executar_testes():
     print("==========================\n")
 
 
-if __name__ == "__main__":
+        if __name__ == "__main__":
     executar_testes()
+    {
+    "categoria": "pergunta_ambigua",
+    "pergunta": "Isso é grave?",
+    "modo": "paciente"
+}
