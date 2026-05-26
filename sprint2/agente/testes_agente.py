@@ -67,7 +67,13 @@ CASOS_TESTE = [
         "pergunta": "Explique os marcadores encontrados.",
         "modo": "tecnico"
     },
-
+    
+    {
+    "categoria": "pergunta_ambigua",
+    "pergunta": "Isso é grave?",
+    "modo": "paciente"
+    }
+    
     {
         "categoria": "sem_contexto",
         "pergunta": "Explique minha predisposição.",
@@ -125,10 +131,4 @@ def executar_testes():
     print("==========================\n")
 
 
-        if __name__ == "__main__":
-    executar_testes()
-    {
-    "categoria": "pergunta_ambigua",
-    "pergunta": "Isso é grave?",
-    "modo": "paciente"
-}
+   
