@@ -95,3 +95,23 @@ Construção do prompt final
 Resposta do agente
 ↓
 Exibição das fontes utilizadas
+
+# 3. Guardrails Médicos
+
+O agente possui uma camada de validação antes da geração da resposta. Essa camada impede que perguntas sensíveis sejam enviadas diretamente ao modelo de linguagem quando envolvem diagnóstico, prescrição, previsão médica absoluta ou temas fora do escopo do relatório.
+
+## Categorias Bloqueadas
+
+| Categoria | Exemplo | Comportamento esperado |
+|----------|---------|------------------------|
+| Diagnóstico | "Tenho câncer?" | Recusa segura e orientação para profissional de saúde |
+| Prescrição | "Qual remédio devo tomar?" | Recusa indicação de medicamento ou dose |
+| Risco alto | "Quanto tempo vou viver?" | Explica que genética não define prognóstico individual |
+| Fora do escopo | "Qual dieta devo fazer?" | Informa que responde apenas sobre o relatório genético |
+| Sem contexto | Nenhum trecho recuperado | Responde que não há informação suficiente |
+
+## Objetivo dos Guardrails
+
+Os guardrails reduzem riscos de alucinação, interpretações indevidas e uso inadequado do sistema em contexto de saúde.
+
+O agente foi projetado para atuar como uma ferramenta educativa e explicativa, não como ferramenta diagnóstica.
