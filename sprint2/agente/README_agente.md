@@ -115,3 +115,26 @@ O agente possui uma camada de validação antes da geração da resposta. Essa c
 Os guardrails reduzem riscos de alucinação, interpretações indevidas e uso inadequado do sistema em contexto de saúde.
 
 O agente foi projetado para atuar como uma ferramenta educativa e explicativa, não como ferramenta diagnóstica.
+
+# 4. Agente Especialista
+
+O arquivo `agente_especialista.py` concentra a lógica principal do agente conversacional.
+
+Ele recebe uma pergunta do usuário, valida a segurança da pergunta por meio dos guardrails, organiza os trechos recuperados pela busca semântica e constrói o prompt final que será enviado ao modelo de linguagem.
+
+## Fluxo do Agente
+
+```txt
+Pergunta do usuário
+↓
+Validação dos guardrails
+↓
+Recebimento dos trechos recuperados pelo RAG
+↓
+Validação de contexto
+↓
+Construção do prompt final
+↓
+Geração da resposta
+↓
+Retorno com resposta + fontes
