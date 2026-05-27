@@ -67,6 +67,10 @@ resultados = colecao.query(
 | `distances[0][i]`          | Distância cosseno — similaridade = `1 - distance`                |
 
 **Importante:** use sempre o modelo `all-MiniLM-L6-v2` para gerar o embedding da pergunta. Se usar outro modelo, os vetores serão incompatíveis com a base.
+Foi implementada a camada oficial de busca semântica em:
+
+```txt
+sprint2/vetorial/buscar.py
 
 ---
 
