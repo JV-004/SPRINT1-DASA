@@ -71,7 +71,7 @@ Foi implementada a camada oficial de busca semântica em:
 
 ```txt
 sprint2/vetorial/buscar.py
-
+```
 ---
 
 ### Para o Integrante 3 — Domador do Agente
