@@ -72,14 +72,13 @@ CASOS_TESTE = [
     "categoria": "pergunta_ambigua",
     "pergunta": "Isso é grave?",
     "modo": "paciente"
-    }
-    
-    {
-        "categoria": "sem_contexto",
-        "pergunta": "Explique minha predisposição.",
-        "modo": "paciente",
-        "contexto": []
-    }
+},
+{
+    "categoria": "sem_contexto",
+    "pergunta": "Explique minha predisposição.",
+    "modo": "paciente",
+    "contexto": []
+}
 ]
 
 
