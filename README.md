@@ -515,7 +515,7 @@ Exibidos em toda sessão, sem exceção:
 
 > 📹 **Sprint 1:** [https://youtu.be/0x63S_5DD_8](https://youtu.be/0x63S_5DD_8)
 
-> 📹 **Sprint 2:** `[link a ser publicado como não listado no YouTube]`
+> 📹 **Sprint 2:** `[https://youtu.be/z1Jqb33pSjU]`
 
 ---
 
