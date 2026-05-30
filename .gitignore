@@ -1,0 +1,17 @@
+# Base vetorial ChromaDB (gerada localmente, não versionar)
+sprint2/vetorial/base_vetorial/
+
+# Chunks com embeddings (arquivo grande, gerado pelo pipeline)
+sprint2/embeddings/chunks.json
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.env
+*.egg-info/
+dist/
+build/
+
+# Cache de modelos do sentence-transformers / HuggingFace
+.cache/
