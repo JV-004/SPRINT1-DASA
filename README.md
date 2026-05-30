@@ -1,141 +1,525 @@
-# FIAP - Faculdade de Informática e Administração Paulista
-
 <p align="center">
-<a href= "https://www.fiap.com.br/"><img src="docs/images/logo-fiap (2).png" alt="FIAP - Faculdade de Informática e Admnistração Paulista" border="0" width=40% height=40%></a>
+  <a href="https://www.fiap.com.br/">
+    <img src="docs/images/logo-fiap (2).png" alt="FIAP" width="35%"/>
+  </a>
 </p>
 
-<br>
+<h1 align="center">Projeto Genera · Dasa</h1>
+<h3 align="center">Sprint 2 — Fase de Inteligência do Sistema</h3>
+<h4 align="center">Transformando relatórios genéticos em uma experiência conversacional inteligente</h4>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3.10+-blue?style=flat-square&logo=python"/>
+  <img src="https://img.shields.io/badge/Streamlit-1.32+-red?style=flat-square&logo=streamlit"/>
+  <img src="https://img.shields.io/badge/ChromaDB-vetorial-green?style=flat-square"/>
+  <img src="https://img.shields.io/badge/RAG-LLM-purple?style=flat-square"/>
+  <img src="https://img.shields.io/badge/LGPD-compliant-orange?style=flat-square"/>
+</p>
+
 ---
 
-# Projeto Dasa Genera - RAG e Agentes de IA
-### Transformando relatórios genéticos em uma experiência inteligente e interativa
+## 👨‍🎓 Equipe
 
----
-
-## EQUIPE FIAP 
-## 👨‍🎓 Integrantes: 
-
-| Nome | RM | Contribuição |
+| Nome | RM |  Sprint 2 |
 |---|---:|---|
-| Tayná Esteves | RM562491 | Product Owner / Negócio |
-| João | RM565999 | Engenheiro de Dados (Pipeline e Estruturação) |
-| Carlos Eduardo | RM566487 | Especialista em IA (Agentes e Prompts) |
-| Endrew Alves | RM563646 | Arquiteto + Front-end (Interface Streamlit e Integração) |
-
-## 👩‍🏫 Professores:
-### Tutor(a) 
-- <a href="https://www.linkedin.com/in/john-paul-lima/">JOHN PAUL LIMA</a>
-### Coordenador(a)
-- <a href="https://www.linkedin.com/in/andregodoichiovato/">ANDRÉ GODOI CHIOVATO</a>
+| João | RM565999 | Integrante 1 · Minerador de Dados (Embeddings + Base Vetorial) |
+| Endrew Alves | RM563646 |Integrantes 2 · Arquiteto da Busca |
+| Tayná Esteves | RM562491 |Integrantes 3 · Domador do Agente |
+| Carlos Eduardo | RM566487 | Integrante 4 · Construtor da Experiência (Interface + Integração LLM) |
 
 
-## 1. Problema
 
-Os relatórios genéticos do produto Genera, da Dasa, concentram informações extremamente valiosas sobre saúde, como predisposição a doenças e características genéticas.
-No entanto, esses dados são entregues em formato PDF, com grande volume de conteúdo e linguagem altamente técnica. Isso gera uma barreira crítica: o usuário possui acesso à informação, mas não consegue compreendê-la plenamente — e, principalmente, não consegue transformá-la em decisões práticas sobre sua saúde. O resultado é um desalinhamento entre o potencial do dado gerado e o valor percebido pelo usuário.
+### 👩‍🏫 Professores
+
+**Tutor:** [John Paul Lima](https://www.linkedin.com/in/john-paul-lima/)  
+**Coordenador:** [André Godoi Chiovato](https://www.linkedin.com/in/andregodoichiovato/)
 
 ---
 
-## 2. A Solução: Genera AI
+## 📋 Índice
 
-A solução consiste na criação de uma interface de chat interativa baseada na arquitetura **RAG (Retrieval-Augmented Generation)** utilizando **LLMs (GPT-4 / GPT-4o)** para transformar relatórios genéticos estruturados em uma experiência conversacional acessível.
-
-O sistema é responsável por:
-- Processar o relatório estruturado em JSON e criar *embeddings*.
-- Indexar as informações em um banco de dados vetorial (**ChromaDB**).
-- Interpretar os resultados com IA e buscar os trechos mais relevantes para a pergunta do usuário.
-- Traduzir os conteúdos técnicos para linguagem acessível (modo paciente) ou detalhada (modo técnico).
-- Proteger as respostas através de rigorosos **Guardrails** (nunca prescrever medicamentos ou dar diagnósticos fechados).
-
----
-
-## 3. 🚀 Como Executar o Projeto
-
-Este projeto foi construído utilizando **Python**, **Streamlit**, **ChromaDB** e a **API da OpenAI**. 
-Siga os passos abaixo para executar a interface localmente:
-
-### Pré-requisitos
-- Python 3.10 ou superior.
-- Chave de API da OpenAI (`OPENAI_API_KEY`).
-
-### Passos para instalação
-
-1. **Clone este repositório:**
-   ```bash
-   git clone https://github.com/JV-004/SPRINT1-DASA.git
-   cd SPRINT1-DASA
-   ```
-
-2. **Crie e ative um ambiente virtual (recomendado):**
-   ```bash
-   python -m venv venv
-   # No Windows:
-   venv\Scripts\activate
-   # No Linux/Mac:
-   source venv/bin/activate
-   ```
-
-3. **Instale as dependências:**
-   ```bash
-   pip install -r sprint2/interface/requirements_interface.txt
-   ```
-
-4. **Configuração de Variáveis de Ambiente:**
-   Crie um arquivo `.env` dentro da pasta `sprint2/interface/` ou adicione sua chave de API diretamente na interface do app quando rodar.
-   ```env
-   OPENAI_API_KEY=sk-sua-chave-aqui
-   ```
-
-5. **Inicie o servidor Streamlit:**
-   A partir da raiz do projeto, execute o seguinte comando:
-   ```bash
-   streamlit run sprint2/interface/app.py
-   ```
-
-6. Acesse a aplicação no seu navegador: `http://localhost:8501`.
-
-Na interface, você poderá clicar no botão **"▶ Usar relatório de demonstração"** para indexar o arquivo `dados_estruturados.json` contido no repositório e iniciar o chat com a IA.
+1. [O que foi construído nesta Sprint](#1-o-que-foi-construído-nesta-sprint)
+2. [Como o sistema funciona — visão geral](#2-como-o-sistema-funciona--visão-geral)
+3. [Arquitetura completa](#3-arquitetura-completa)
+4. [Integrante 1 — Minerador de Dados](#4-integrante-1--minerador-de-dados)
+5. [Integrante 2 — Arquiteto da Busca](#5-integrante-2--arquiteto-da-busca)
+6. [Integrante 3 — Domador do Agente](#6-integrante-3--domador-do-agente)
+7. [Integrante 4 — Construtor da Experiência](#7-integrante-4--construtor-da-experiência)
+8. [Como executar o projeto](#8-como-executar-o-projeto)
+9. [Estrutura do repositório](#9-estrutura-do-repositório)
+10. [Governança, Ética e LGPD](#10-governança-ética-e-lgpd)
+11. [Continuidade — da Sprint 1 para a Sprint 2](#11-continuidade--da-sprint-1-para-a-sprint-2)
+12. [Vídeo de apresentação](#12-vídeo-de-apresentação)
 
 ---
 
-## 4. Arquitetura Técnica
+## 1. O que foi construído nesta Sprint
 
-A arquitetura foi dividida entre os integrantes da equipe durante a **Sprint 2** e atua no seguinte fluxo:
+A Sprint 1 resolveu o problema da estruturação: transformar o PDF do relatório genético Genera em um JSON organizado e legível por máquina.
 
-1. **Upload / Carga do Relatório (Pipeline):** Processamento do arquivo JSON do relatório genético utilizando um script pipeline que gera os embeddings com o modelo `sentence-transformers` local.
-2. **Indexação Vetorial (RAG):** Os embeddings gerados são indexados e salvos localmente utilizando **ChromaDB**. Quando o usuário faz uma pergunta, a busca vetorial retorna os `top_k` (3) trechos mais relevantes do JSON.
-3. **Agente Especialista:** O contexto encontrado no ChromaDB é passado junto à pergunta do usuário e instruções de sistema (Prompts e Guardrails) para a API da **OpenAI**.
-4. **Interface Streamlit:** Interface gráfica onde o usuário interage, seleciona seu modo de conversa (técnico ou paciente) e lê a resposta contextualizada, verificando também o nível de similaridade e as fontes do seu próprio relatório que foram utilizadas para construir aquela resposta.
+**A Sprint 2 constrói a inteligência sobre esses dados.**
 
-### 🛡️ Guardrails (Segurança)
+Nesta fase foram implementados quatro componentes que, conectados em sequência, permitem que qualquer pessoa possa conversar com seu próprio relatório genético em linguagem natural:
 
-Por se tratar de dados de saúde, foram integrados *guardrails* rígidos na camada do modelo especialista:
-- **Sem diagnóstico ou receita:** A IA é proibida de sugerir medicamentos ou declarar o diagnóstico final.
-- **Fora de escopo:** Perguntas que fogem dos dados contidos no exame genético não são respondidas para evitar "alucinações".
-- **Transparência:** O usuário vê de forma clara e visível de onde (qual parte do exame) a IA extraiu a informação para a resposta (na forma de cards de fontes).
+| Componente | O que faz |
+|---|---|
+| **Pipeline de Embeddings** | Divide o JSON em unidades semânticas e gera representações vetoriais |
+| **Base Vetorial (ChromaDB)** | Armazena e indexa os vetores para busca por significado |
+| **Busca Semântica** | Encontra os trechos do relatório mais relevantes para cada pergunta |
+| **Agente Especialista + LLM** | Interpreta os trechos e responde em linguagem natural, com guardrails médicos |
+| **Interface de Chat (Streamlit)** | Permite a interação do usuário com o sistema completo |
 
 ---
 
-## 5. Estrutura do Repositório (Sprint 2)
+## 2. Como o sistema funciona — visão geral
 
-```text
-📦 SPRINT1-DASA
- ┣ 📂 docs                   # Imagens e documentação
- ┣ 📂 sprint2
- ┃ ┣ 📂 agente               # Lógica de prompts, guardrails e chamadas ao LLM
- ┃ ┣ 📂 embeddings           # Funções de geração de representação vetorial
- ┃ ┣ 📂 interface            # App em Streamlit (app.py) e conectores
- ┃ ┣ 📂 pipeline             # Orquestrador de indexação do JSON para a Base Vetorial
- ┃ ┣ 📂 testes               # Scripts de validação de busca
- ┃ ┗ 📂 vetorial             # Manipulação do banco vetorial (ChromaDB)
- ┣ 📜 README.md              # Documentação principal do projeto
- ┗ 📜 dados_estruturados.json # Exemplo de payload simulando os dados de um relatório Genera
+> *"Você contratou um médico geneticista que leu seu relatório inteiro, memorizou tudo, e está pronto para responder qualquer pergunta — em português claro, sem jargão, sem te assustar. Mas esse médico é uma IA."*
+
+**O fluxo em linguagem simples:**
+
+```
+Você digita uma pergunta
+        ↓
+O sistema busca no SEU relatório os trechos mais relevantes
+        ↓
+Esses trechos são entregues ao modelo de linguagem como contexto
+        ↓
+O modelo responde com base exclusivamente no que está no relatório
+        ↓
+A resposta aparece no chat — com as fontes que a embasaram
+```
+
+**Por que esse processo evita invenções?**  
+Modelos de linguagem podem "completar frases" com informações que parecem verdadeiras mas não são — isso se chama alucinação. A arquitetura RAG (Retrieval-Augmented Generation) resolve isso: antes de responder, o sistema recupera os dados reais do relatório e os entrega ao modelo como contexto obrigatório. O modelo responde com base no que encontrou — não no que imagina.
+
+---
+
+## 3. Arquitetura completa
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│  SPRINT 1 (base herdada)                                            │
+│  relatorio_genera_simulado.pdf  →  dados_estruturados.json          │
+│  pdfplumber + PyMuPDF · limpeza · schema JSON padronizado           │
+└──────────────────────────────────┬──────────────────────────────────┘
+                                   │
+                                   ▼
+┌─────────────────────────────────────────────────────────────────────┐
+│  INTEGRANTE 1 — Minerador de Dados                                  │
+│  gerar_embeddings.py                                                │
+│  dados_estruturados.json → 25 chunks semânticos → embeddings 384D  │
+│  Modelo: all-MiniLM-L6-v2 (local, gratuito)                        │
+│                                                                     │
+│  indexar.py                                                         │
+│  chunks.json → ChromaDB (distância cosseno, persistido em disco)   │
+└──────────────────────────────────┬──────────────────────────────────┘
+                                   │ base_vetorial/ pronta
+                                   ▼
+┌─────────────────────────────────────────────────────────────────────┐
+│  INTEGRANTE 2 — Arquiteto da Busca                                  │
+│  buscar.py · buscar_contexto()                                      │
+│  pergunta → embedding → query ChromaDB → top-3 trechos             │
+│  filtro: similaridade mínima 0.50 · retorna conteudo, secao,       │
+│  fonte, similaridade                                                │
+└──────────────────────────────────┬──────────────────────────────────┘
+                                   │ trechos relevantes
+                                   ▼
+┌─────────────────────────────────────────────────────────────────────┐
+│  INTEGRANTE 3 — Domador do Agente                                   │
+│  guardrails.py → valida pergunta (diagnóstico? prescrição? escopo?) │
+│  prompts.py → SYSTEM_PROMPT com tom, restrições e formato           │
+│  agente_especialista.py → monta prompt final e orquestra resposta  │
+│  config_llm.py: GPT-4.1 Mini · temp 0.2 · top_p 0.8 · 700 tokens  │
+└──────────────────────────────────┬──────────────────────────────────┘
+                                   │ prompt final estruturado
+                                   ▼
+┌─────────────────────────────────────────────────────────────────────┐
+│  INTEGRANTE 4 — Construtor da Experiência                           │
+│  llm_connector.py → chamada real à API OpenAI (GPT-4.1 Mini)       │
+│  app.py (Streamlit) → chat, upload, fontes, disclaimers, guardrails │
+│  Tema escuro genômico · modo paciente / técnico · rastreabilidade  │
+└──────────────────────────────────┬──────────────────────────────────┘
+                                   │
+                                   ▼
+                          Usuário recebe resposta
+                    com fontes e trechos do relatório
 ```
 
 ---
 
-## 6. Conclusão
+## 4. Integrante 1 — Minerador de Dados
 
-Esta entrega demonstra a viabilidade técnica de empoderar pacientes da Dasa (Genera) através da inteligência artificial generativa. A união da segurança do **Retrieval-Augmented Generation (RAG)** com a capacidade interpretativa e empática dos LLMs modernos garante respostas confiáveis, personalizadas, didáticas e restritas unicamente aos resultados médicos verídicos do paciente.
+> *"Eu transformo o caos em ordem."*
 
-> 📹 **Vídeo de apresentação original (Sprint 1):** https://youtu.be/0x63S_5DD_8?si=tAdz-H4V1V-Ay5te *
+### O que foi feito
+
+O Integrante 1 recebeu o `dados_estruturados.json` produzido na Sprint 1 e construiu o pipeline completo de vetorização — a infraestrutura que torna o relatório pesquisável por significado, não apenas por palavras-chave.
+
+### Estratégia de chunking
+
+Cada chunk representa uma **unidade semântica**, não um número fixo de caracteres. Para cada condição genética do relatório são gerados 3 chunks distintos:
+
+| Chunk | Conteúdo | Para quem |
+|---|---|---|
+| `resultado_2.X` | Descrição simples + impacto prático | Paciente leigo |
+| `recomendacao_2.X` | Recomendação clínica + urgência | Ações preventivas |
+| `marcadores_2.X` | Marcadores genéticos + descrição técnica | Médico / perfil clínico |
+
+Além disso, chunks específicos para: `paciente`, `sumario`, `ancestralidade` e `metadata`.
+
+**Resultado: 25 chunks · 384 dimensões · distância cosseno**
+
+### Decisões técnicas
+
+**Por que ChromaDB?**  
+Local e gratuito, sem dependência de serviço externo ou API key. Persiste em disco e reutiliza a base entre execuções. Distância cosseno configurada nativamente.
+
+**Por que `all-MiniLM-L6-v2`?**  
+Roda completamente offline após o primeiro download. Leve (384 dimensões), rápido e com boa qualidade para busca semântica em textos de saúde. Padrão da comunidade para RAG em projetos acadêmicos.
+
+### Arquivos
+
+| Arquivo | Função |
+|---|---|
+| `sprint2/embeddings/gerar_embeddings.py` | Divide o JSON em chunks e gera embeddings |
+| `sprint2/vetorial/indexar.py` | Indexa os chunks no ChromaDB |
+| `sprint2/pipeline/pipeline_completo.py` | Executa as duas etapas em sequência |
+| `sprint2/testes/testar_busca.py` | Valida a busca com perguntas de exemplo |
+
+---
+
+## 5. Integrante 2 — Arquiteto da Busca
+
+> *"Eu faço a IA achar a agulha no palheiro."*
+
+### O que foi feito
+
+O Integrante 2 implementou a camada de busca semântica que transforma uma pergunta em linguagem natural em trechos do relatório — a "ponte" entre a pergunta do usuário e o contexto que o LLM vai usar para responder.
+
+### Como a busca funciona
+
+```
+Pergunta do usuário ("Tenho risco de diabetes?")
+        ↓
+Embedding da pergunta via all-MiniLM-L6-v2
+        ↓
+Query no ChromaDB: distância cosseno entre pergunta e todos os chunks
+        ↓
+Filtro: similaridade ≥ 0.50
+        ↓
+Top-3 chunks mais próximos semanticamente retornados
+```
+
+### Contrato da função principal
+
+```python
+from sprint2.vetorial.buscar import buscar_contexto
+
+resultado = buscar_contexto(pergunta="Tenho risco de diabetes?", top_k=3)
+
+# Retorna:
+# {
+#   "pergunta": str,
+#   "encontrou_contexto": bool,
+#   "trechos": [{"conteudo", "secao", "fonte", "similaridade"}],
+#   "contexto": str  # trechos formatados prontos para o LLM
+# }
+```
+
+### Parâmetros configurados
+
+| Parâmetro | Valor | Justificativa |
+|---|---|---|
+| `top_k` | 3 | Equilíbrio entre contexto suficiente e janela do LLM |
+| `similaridade_minima` | 0.50 | Evita trechos irrelevantes sem ser restritivo demais |
+| Distância | Cosseno | Padrão para busca semântica — invariante à magnitude |
+
+---
+
+## 6. Integrante 3 — Domador do Agente
+
+> *"Eu decido como a IA pensa e fala."*
+
+### O que foi feito
+
+O Integrante 3 construiu toda a lógica de comportamento do agente: como ele valida perguntas, monta o contexto, escolhe o tom e garante que nunca ultrapasse os limites de segurança médica.
+
+### Modelo e hiperparâmetros
+
+| Parâmetro | Valor | Justificativa |
+|---|---|---|
+| Modelo | GPT-4.1 Mini | Bom desempenho em português, baixo custo, adequado para RAG |
+| Temperatura | 0.2 | Respostas consistentes e precisas, sem variação excessiva |
+| Top-p | 0.8 | Vocabulário controlado |
+| Max tokens | 700 | Respostas completas sem prolixidade |
+
+### Guardrails implementados
+
+O agente bloqueia categorias de perguntas **antes** de chamar o LLM:
+
+| Categoria bloqueada | Exemplo | Resposta do agente |
+|---|---|---|
+| Diagnóstico | "Tenho câncer?" | Redireciona para profissional de saúde |
+| Prescrição | "Qual remédio devo tomar?" | Recusa e explica o escopo |
+| Previsão médica absoluta | "Quanto tempo vou viver?" | Contextualiza limitações da genética |
+| Fora do relatório | "Qual dieta devo fazer?" | Informa que responde só sobre o relatório |
+| Sem contexto suficiente | Nenhum chunk recuperado | Admite ausência de informação |
+
+### Modos de resposta
+
+**Modo Paciente:** linguagem simples, acolhedora, sem jargão, explica termos  
+**Modo Técnico:** linguagem detalhada, terminologia genômica, voltado a profissionais
+
+### Formato de resposta do agente
+
+```
+Resumo:       [resposta curta e direta]
+Explicação:   [contextualização do dado genético]
+Na prática:   [o que isso significa no dia a dia]
+Baseado em:   [seções do relatório utilizadas]
+```
+
+### Arquivos
+
+| Arquivo | Função |
+|---|---|
+| `sprint2/agente/agente_especialista.py` | Orquestrador do fluxo principal |
+| `sprint2/agente/prompts.py` | SYSTEM_PROMPT, FALLBACK_PROMPT |
+| `sprint2/agente/guardrails.py` | Validação de perguntas e contexto |
+| `sprint2/agente/config_llm.py` | Modelo e hiperparâmetros |
+| `sprint2/agente/testes_agente.py` | 9 casos de teste (normal, borda, bloqueio) |
+
+---
+
+## 7. Integrante 4 — Construtor da Experiência
+
+> *"Eu faço tudo isso chegar até o usuário."*
+
+### O que foi feito
+
+O Integrante 4 conectou todos os módulos anteriores e entregou a interface funcional que o usuário final vê e usa. A contribuição central é o `llm_connector.py` — a camada que substitui a resposta simulada do agente pela chamada real à API OpenAI.
+
+### Contribuição técnica central — `llm_connector.py`
+
+O `agente_especialista.py` do Integrante 3 produz o prompt final mas usa uma função simulada para gerar a resposta. O `llm_connector.py` envolve essa lógica e faz a chamada real ao GPT-4.1 Mini, respeitando exatamente os hiperparâmetros definidos em `config_llm.py`, sem alterar nenhum arquivo dos outros integrantes.
+
+### Interface — funcionalidades
+
+**Sidebar:**
+- Campo seguro para inserção da API key (se não configurada via `.env`)
+- Upload de relatório JSON ou PDF
+- Botão "Usar relatório de demonstração" (carrega `dados_estruturados.json`)
+- Modo de resposta: Paciente / Técnico
+- 5 botões de perguntas frequentes clicáveis
+- Botão "Limpar conversa"
+- Disclaimer de privacidade LGPD
+
+**Área de chat:**
+- Histórico persistente durante a sessão
+- Respostas com efeito de streaming
+- Expander "📄 Fontes utilizadas" em cada resposta — mostra os trechos exatos do relatório com seção, origem e barra de similaridade
+- Mensagens distintas para respostas bloqueadas pelos guardrails
+
+**Banner de disclaimer (sempre visível):**
+> ⚠️ Este assistente é informativo e não substitui avaliação médica. As respostas são baseadas exclusivamente no seu relatório genético. Consulte sempre um médico geneticista.
+
+### Arquivos
+
+| Arquivo | Função |
+|---|---|
+| `sprint2/interface/app.py` | Interface Streamlit completa |
+| `sprint2/interface/llm_connector.py` | Integração real com a API OpenAI |
+| `sprint2/interface/requirements_interface.txt` | Dependências da interface |
+| `sprint2/interface/.env.example` | Template de configuração da API key |
+| `sprint2/interface/README_integrante4.md` | Documentação técnica do Integrante 4 |
+
+---
+
+## 8. Como executar o projeto
+
+### Pré-requisitos
+
+- Python 3.10 ou superior
+- Conta na OpenAI com créditos disponíveis ([platform.openai.com](https://platform.openai.com))
+- Git
+
+### Instalação
+
+```bash
+# 1. Clonar o repositório
+git clone <url-do-repositorio>
+cd <nome-da-pasta>
+
+# 2. Instalar dependências
+pip install -r sprint2/interface/requirements_interface.txt
+```
+
+### Configuração da API Key
+
+```bash
+# Copiar o arquivo de exemplo
+cp sprint2/interface/.env.example sprint2/interface/.env
+
+# Editar o arquivo e inserir sua chave
+# OPENAI_API_KEY=sk-...
+```
+
+> A chave também pode ser inserida diretamente na sidebar da interface, sem necessidade do arquivo `.env`.
+
+### Gerar a base vetorial (necessário apenas na primeira vez ou ao trocar relatório)
+
+```bash
+python sprint2/pipeline/pipeline_completo.py
+```
+
+Saída esperada:
+```
+PIPELINE CONCLUÍDO em ~15s
+  Chunks gerados: 25
+  Base vetorial: sprint2/vetorial/base_vetorial/
+  Pronto para busca semântica.
+```
+
+### Iniciar a interface
+
+```bash
+streamlit run sprint2/interface/app.py
+```
+
+Acesse no navegador: `http://localhost:8501`
+
+### Validar a busca (opcional)
+
+```bash
+python sprint2/testes/testar_busca.py
+```
+
+### Executar testes do agente (opcional)
+
+```bash
+cd sprint2/agente
+python testes_agente.py
+```
+
+---
+
+## 9. Estrutura do repositório
+
+```
+projeto/
+│
+├── dados_estruturados.json              ← JSON do relatório (Sprint 1)
+├── relatorio_genera_simulado.pdf        ← PDF original simulado
+├── README.md                            ← README geral (Sprint 1)
+│
+├── sprint2/
+│   │
+│   ├── embeddings/
+│   │   ├── gerar_embeddings.py          ← divide JSON em chunks + embeddings
+│   │   └── chunks.json                  ← gerado automaticamente [.gitignore]
+│   │
+│   ├── vetorial/
+│   │   ├── indexar.py                   ← indexa chunks no ChromaDB
+│   │   ├── buscar.py                    ← busca semântica (Integrante 2)
+│   │   └── base_vetorial/               ← ChromaDB persistido [.gitignore]
+│   │
+│   ├── pipeline/
+│   │   └── pipeline_completo.py         ← executa embeddings + indexação
+│   │
+│   ├── agente/
+│   │   ├── agente_especialista.py       ← orquestrador do agente (Int. 3)
+│   │   ├── config_llm.py                ← modelo e hiperparâmetros
+│   │   ├── prompts.py                   ← SYSTEM_PROMPT e fallbacks
+│   │   ├── guardrails.py                ← validação de segurança médica
+│   │   └── testes_agente.py             ← 9 casos de teste
+│   │
+│   ├── testes/
+│   │   └── testar_busca.py              ← valida busca semântica
+│   │
+│   ├── interface/
+│   │   ├── app.py                       ← interface Streamlit (Int. 4)
+│   │   ├── llm_connector.py             ← integração OpenAI
+│   │   ├── requirements_interface.txt
+│   │   ├── .env.example
+│   │   └── README_integrante4.md
+│   │
+│   └── README_sprint2.md                ← documentação técnica Sprint 2
+│
+└── docs/
+    ├── images/
+    │   ├── logo-fiap (2).png
+    │   └── arquitetura.png
+    ├── mapeamento_secoes.md
+    ├── extracao_tecnica.md
+    ├── priorizacao_campos.md
+    └── exemplos_interacao.md
+```
+
+> **Importante:** `chunks.json` e `base_vetorial/` estão no `.gitignore`. Cada membro do grupo deve rodar o pipeline localmente para gerá-los. Eles não são versionados por questões de tamanho e por conterem dados do relatório.
+
+---
+
+## 10. Governança, Ética e LGPD
+
+### Limites do agente
+
+O sistema foi projetado como **ferramenta educativa e explicativa** — não diagnóstica.
+
+| O que o agente FAZ | O que o agente NÃO FAZ |
+|---|---|
+| ✅ Explica termos genéticos em linguagem simples | ❌ Emite diagnósticos médicos |
+| ✅ Apresenta predisposições como tendências | ❌ Prescreve medicamentos ou tratamentos |
+| ✅ Mostra as fontes de cada resposta | ❌ Responde fora do escopo do relatório |
+| ✅ Admite quando não há informação suficiente | ❌ Completa lacunas com conhecimento externo |
+| ✅ Redireciona para profissional quando necessário | ❌ Faz previsões médicas absolutas |
+
+### Privacidade dos dados
+
+- O relatório PDF é processado localmente e não é persistido no servidor
+- A base vetorial é armazenada em disco local, nunca enviada para serviços externos
+- Os únicos dados enviados externamente são os trechos relevantes do relatório + a pergunta, enviados à API OpenAI para geração da resposta
+- Nenhuma informação pessoal é armazenada além da sessão ativa do Streamlit
+- O arquivo `.env` com a API key está no `.gitignore` e nunca é versionado
+
+### LGPD
+
+A solução respeita os princípios da Lei Geral de Proteção de Dados (Art. 11 — dados sensíveis de saúde):
+- Processamento limitado à finalidade informativa
+- Dados genéticos não compartilhados com terceiros além da API OpenAI (necessário para a funcionalidade)
+- Ausência de armazenamento persistente de dados pessoais
+
+### Disclaimers obrigatórios
+
+Exibidos em toda sessão, sem exceção:
+- Banner permanente no topo da interface
+- Sufixo automático em respostas sobre riscos de saúde
+- Aviso na sidebar sobre natureza informativa (não diagnóstica) do assistente
+
+---
+
+## 11. Continuidade — da Sprint 1 para a Sprint 2
+
+| Entregável | Sprint 1 | Sprint 2 |
+|---|---|---|
+| Relatório genético | PDF bruto | Indexado em base vetorial |
+| Dados | JSON estruturado | 25 chunks com embeddings 384D |
+| IA | Proposta conceitual | Pipeline RAG funcional |
+| Busca | Inexistente | Busca semântica por cosseno |
+| Agente | Inexistente | Guardrails + system prompt + LLM |
+| Interface | Wireframe/conceito | Chat funcional em Streamlit |
+| Governança | Descrita | Implementada (guardrails + disclaimers) |
+
+---
+
+## 12. Vídeo de apresentação
+
+> 📹 **Sprint 1:** [https://youtu.be/0x63S_5DD_8](https://youtu.be/0x63S_5DD_8)
+
+> 📹 **Sprint 2:** `[link a ser publicado como não listado no YouTube]`
+
+---
+
+<p align="center">
+  <sub>Projeto desenvolvido para a disciplina de Inteligência Artificial · FIAP 2026</sub><br/>
+  <sub>Genera AI · Dasa · Grupo Sprint 2</sub>
+</p>
